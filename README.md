@@ -2,7 +2,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/Manifest-V3-1a73e8?style=flat-square&logo=googlechrome&logoColor=white" alt="Manifest V3" />
-  <img src="https://img.shields.io/badge/Version-1.0.0-34a853?style=flat-square" alt="Version 1.0.0" />
+  <img src="https://img.shields.io/badge/Version-1.0.1-34a853?style=flat-square" alt="Version 1.0.1" />
   <img src="https://img.shields.io/badge/License-MIT-fbbc04?style=flat-square" alt="MIT License" />
   <img src="https://img.shields.io/badge/Platform-Chrome%20%7C%20Edge%20%7C%20Brave-ea4335?style=flat-square" alt="Platform" />
 </p>
@@ -51,8 +51,8 @@ sequenceDiagram
    Triggering verification from Google Cloud Console's **Cloud Shell (`[>_]`) -> `Verify`** generates a clean `uplevelingstep/selection?TL=...&authuser=0&flowName=GlifWebSignIn&sarp=1&scc=1` continuation token without nested third-party OAuth redirects.
 2. **Native QR Extraction (`BarcodeDetector`)**:
    Extracts the `devicephoneverification/begin` URL directly from the DOM `<img>` / `<canvas>` element in milliseconds without external dependencies or screenshots.
-3. **Full-Path `iPad Mini` Header Consistency**:
-   Uses Chrome's `declarativeNetRequest` to enforce the `iPad Mini` User-Agent (`CPU OS 16_6 like Mac OS X ... Mobile/15E148`) and strip desktop Client Hints (`Sec-CH-UA*`) across **all** `accounts.google.com/*` routes—including `/uplevelingstep/*`, `/v3/signin/challenge/*`, and the `/_/IdvUplevelingUi/data/batchexecute` RPC endpoint used when submitting the 6-digit SMS code.
+3. **Scoped `iPad Mini` Header Consistency**:
+   Uses Chrome's `declarativeNetRequest` to enforce the `iPad Mini` User-Agent (`CPU OS 16_6 like Mac OS X ... Mobile/15E148`) and strip desktop Client Hints (`Sec-CH-UA*`) strictly on `/uplevelingstep/*` and `/_/IdvUplevelingUi/*` (plus `iPhone` UA on `/devicephoneverification/*`), leaving normal `/v3/signin/*` login routes untouched.
 
 ---
 
@@ -120,7 +120,7 @@ node scripts/build.mjs
 
 Artifacts will be generated in `dist/`:
 - `dist/unpacked/`: Extension folder ready for Chrome Developer Mode
-- `dist/google-qr-sms-v1.0.0.zip`: Release archive ready for upload
+- `dist/google-qr-sms-v1.0.1.zip`: Release archive ready for upload
 
 ---
 
