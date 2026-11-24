@@ -11,7 +11,7 @@
 
   const title = document.createElement("div");
   title.style.cssText = "font-weight:600;font-size:14px;display:flex;justify-content:space-between;align-items:center;";
-  title.textContent = "⚡ Google QR SMS Helper v1.0.0";
+  title.textContent = "⚡ Google QR SMS Helper v1.0.1";
   panel.appendChild(title);
 
   const statusEl = document.createElement("div");

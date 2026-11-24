@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Google QR SMS Helper",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Downgrade Google mandatory cross-device QR code verification back to 6-digit SMS verification while maintaining iPad Mini environment.",
   "permissions": [
     "declarativeNetRequest",
@@ -20,10 +20,7 @@
   "content_scripts": [
     {
       "matches": [
-        "https://accounts.google.com/*"
-      ],
-      "exclude_matches": [
-        "https://accounts.google.com/*challenge/iap/qrcode*"
+        "https://accounts.google.com/uplevelingstep/*"
       ],
       "js": ["src/inject/uaSpoof.js"],
       "run_at": "document_start",
