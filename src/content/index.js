@@ -11,7 +11,7 @@
 
   const title = document.createElement("div");
   title.style.cssText = "font-weight:600;font-size:14px;display:flex;justify-content:space-between;align-items:center;";
-  title.textContent = "⚡ Google QR SMS Helper v1.0.1";
+  title.textContent = "⚡ Google QR SMS Helper v1.0.2";
   panel.appendChild(title);
 
   const statusEl = document.createElement("div");
@@ -127,6 +127,9 @@
       if (!cont) throw new Error("Current URL does not have a continue parameter. Please start from Cloud Shell Verify.");
 
       const targetUrl = new URL(cont, location.origin);
+      if (!targetUrl.pathname.includes("/uplevelingstep")) {
+        throw new Error(`Unsupported continue URL (${targetUrl.pathname}). Please trigger Verify from Google Cloud Shell ([>_] -> Verify) instead of regular sign-in.`);
+      }
       if (!targetUrl.searchParams.has("TL") && pageTl) {
         targetUrl.searchParams.set("TL", pageTl);
       }

@@ -20,12 +20,13 @@ const SCOPED_RESOURCE_TYPES = ["main_frame", "sub_frame", "xmlhttprequest", "oth
 
 /**
  * Registers Chrome declarativeNetRequest dynamic rules to enforce iPad Mini UA
- * on /uplevelingstep/* and /_/IdvUplevelingUi/*, and iPhone UA on /devicephoneverification/*.
+ * on /uplevelingstep/*, /_/IdvUplevelingUi/*, and /_/AalUplevelingUi/*,
+ * and iPhone UA on /devicephoneverification/*.
  * Normal sign-in routes (/v3/signin/*) are left untouched to avoid BotGuard blocks.
  */
 export function setupDnrRules() {
   return chrome.declarativeNetRequest.updateDynamicRules({
-    removeRuleIds: [1, 2, 3],
+    removeRuleIds: [1, 2, 3, 4],
     addRules: [
       {
         id: 1,
@@ -55,6 +56,14 @@ export function setupDnrRules() {
         ...IPAD_RULE_BASE,
         condition: {
           urlFilter: "||accounts.google.com/_/IdvUplevelingUi/*",
+          resourceTypes: SCOPED_RESOURCE_TYPES
+        }
+      },
+      {
+        id: 4,
+        ...IPAD_RULE_BASE,
+        condition: {
+          urlFilter: "||accounts.google.com/_/AalUplevelingUi/*",
           resourceTypes: SCOPED_RESOURCE_TYPES
         }
       }
