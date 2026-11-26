@@ -75,6 +75,9 @@ sequenceDiagram
    Log in to your Google account and visit [https://console.cloud.google.com/](https://console.cloud.google.com/).
 2. **Step 2 — Trigger Cloud Shell Verification**:
    Click the **Activate Cloud Shell (`[>_]`)** icon in the top-right navigation bar (or click the extension's floating button **`1. Open Cloud Shell Terminal`**), then click **`Verify`** in the modal dialog.
+
+   ![Cloud Shell Verify](./docs/images/cloud-shell-verify.png)
+
 3. **Step 3 — One-Click Downgrade**:
    On the QR code verification page (`/v3/signin/challenge/iap/qrcode`), click the floating button **`⚡ Downgrade to SMS Verification`** in the bottom-right corner.
 4. **Step 4 — Receive 6-Digit SMS Code**:
